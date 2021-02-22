@@ -14,7 +14,7 @@ before_install:
   - gcloud config set project carbon-sensor-305510
   - gcloud config set compute/zone europe-west2-a
   - gcloud container clusters get-credentials mulit-cluster
-  - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t lechindianer/react-test -f client/Dockerfile.dev ./client
 script:
   - docker run -e CI=true lechindianer/react-test npm test -- --coverage
